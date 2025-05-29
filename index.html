@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Maths Practice - Grade 8 & 9</title>
 <style>
 :root {
@@ -12,6 +13,60 @@
 --light: #ecf0f1;
 --dark: #2c3e50;
 --success: #2ecc71;
+}
+  /* Ensure content scales correctly on all devices */
+meta[name="viewport"] {
+  content: "width=device-width, initial-scale=1";
+}
+
+/* Universal box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Prevent horizontal scroll */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Make main container responsive */
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 15px;
+}
+
+/* Responsive text and buttons */
+button, input, label, h1, h2, h3, h4, h5, h6, p {
+  font-size: 1em;
+}
+
+/* Use flexible layouts */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.column {
+  flex: 1 1 100%;
+  padding: 10px;
+}
+  @media screen and (max-width: 768px) {
+  .column {
+    flex: 1 1 100%;
+  }
+
+  .container {
+    padding: 0 10px;
+  }
+
+  button {
+    font-size: 1rem;
+    width: 100%;
+  }
 }
 
 * {
