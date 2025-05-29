@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maths Practice - Grade 8 & 9</title>
+<style>
+:root {
+--primary: #2c3e50;
+--secondary: #3498db;
+--accent: #e74c3c;
+--light: #ecf0f1;
+--dark: #2c3e50;
+--success: #2ecc71;
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+background-color: #f5f5f5;
+color: var(--dark);
+line-height: 1.6;
+font-size: 16px;
+}
+
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 20px;
+}
+
+header {
+background-color: var(--primary);
+color: white;
+padding: 20px 0;
+text-align: center;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+header h1 {
+margin-bottom: 10px;
+font-size: 2rem;
+}
+
+.tabs {
+display: flex;
+justify-content: center;
+margin: 20px 0;
+border-bottom: 1px solid #ddd;
+flex-wrap: wrap;
+}
+
+.tab-btn {
+padding: 10px 15px;
+background: none;
+border: none;
+cursor: pointer;
+font-size: 16px;
+font-weight: bold;
+color: var(--dark);
+transition: all 0.3s;
+margin: 0 5px;
+}
+
+.tab-btn.active {
+color: var(--secondary);
+border-bottom: 3px solid var(--secondary);
+}
+
+.tab-content {
+display: none;
+padding: 15px;
+background: white;
+border-radius: 5px;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.tab-content.active {
+display: block;
+}
+
+.form-group {
+margin-bottom: 15px;
+}
+
+label {
+display: block;
+margin-bottom: 5px;
+font-weight: bold;
+}
+
+input, textarea, select {
+width: 100%;
+padding: 10px;
+border: 1px solid #ddd;
+border-radius: 4px;
+font-size: 16px;
+}
+
+button {
+background-color: var(--secondary);
+color: white;
+border: none;
+padding: 10px 20px;
+border-radius: 4px;
+cursor: pointer;
+font-size: 16px;
+transition: background-color 0.3s;
+margin: 5px 0;
+}
+
+button:hover {
+background-color: #2980b9;
+}
+
+.solution {
+margin-top: 20px;
+padding: 15px;
+background-color: #f9f9f9;
+border-left: 4px solid var(--secondary);
+}
+
+.step {
+margin-bottom: 10px;
+}
+
+.quiz-question {
+margin-bottom: 20px;
+padding: 15px;
+background-color: white;
+border-radius: 5px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.options {
+margin-top: 10px;
+}
+
+.option {
+margin: 5px 0;
+padding: 10px;
+background-color: var(--light);
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.option:hover {
+background-color: #ddd;
+}
+
+.option.selected {
+background-color: var(--secondary);
+color: white;
+}
+
+.option.correct {
+background-color: var(--success);
+color: white;
+}
+
+.option.incorrect {
+background-color: var(--accent);
+color: white;
+}
+
+.quiz-nav {
+display: flex;
+justify-content: space-between;
+margin-top: 20px;
+}
+
+.progress-container {
+margin: 20px 0;
+}
+
+.progress-bar {
+height: 10px;
+background-color: #ddd;
+border-radius: 5px;
+overflow: hidden;
+}
+
+.progress {
+height: 100%;
+background-color: var(--secondary);
+width: 0%;
+transition: width 0.3s;
+}
+
+.results {
+text-align: center;
+padding: 20px;
+}
+
+.score {
+font-size: 24px;
+font-weight: bold;
+margin: 10px 0;
+}
+
+.chart-container {
+margin: 30px auto;
+max-width: 600px;
+height: 300px;
+}
+
+.history-item {
+padding: 15px;
+margin-bottom: 10px;
+background-color: white;
+border-radius: 5px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.report-summary {
+display: flex;
+justify-content: space-around;
+margin: 20px 0;
+flex-wrap: wrap;
+}
+
+.report-card {
+text-align: center;
+padding: 15px;
+background-color: white;
+border-radius: 5px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+flex: 1;
+margin: 10px;
+min-width: 250px;
+}
+
+.report-card h3 {
+color: var(--secondary);
+}
+
+.question-level {
+display: inline-block;
+padding: 3px 8px;
+border-radius: 3px;
+font-size: 12px;
+font-weight: bold;
+margin-left: 10px;
+}
+
+.level-basic {
+background-color: #2ecc71;
+color: white;
+}
+
+.level-intermediate {
+background-color: #f39c12;
+color: white;
+}
+
+.level-advanced {
+background-color: #e74c3c;
+color: white;
+}
+
+.open-ended-question {
+margin-bottom: 20px;
+padding: 15px;
+background-color: white;
+border-radius: 5px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.open-ended-solution {
+margin-top: 15px;
+padding: 15px;
+background-color: #f9f9f9;
+border-left: 4px solid var(--secondary);
+display: none;
+}
+
+.open-ended-solution.show {
+display: block;
+}
+
+.difficulty-selector {
+margin: 15px 0;
+}
+
+.difficulty-btn {
+background-color: #ddd;
+color: var(--dark);
+margin-right: 5px;
+}
+
+.difficulty-btn.active {
+background-color: var(--secondary);
+color: white;
+}
+
+.practice-question {
+margin-bottom: 20px;
+padding: 15px;
+background-color: white;
+border-radius: 5px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.practice-controls {
+display: flex;
+justify-content: space-between;
+margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+.tab-btn {
+padding: 8px 12px;
+font-size: 14px;
+}
+
+.container {
+padding: 10px;
+}
+
+header h1 {
+font-size: 1.5rem;
+}
+
+.report-card {
+min-width: 100%;
+margin: 10px 0;
+}
+
+button {
+padding: 8px 15px;
+font-size: 14px;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<h1>Maths Practice</h1>
+<p>Grade 8 & 9 Mathematics Practice Questions</p>
+</div>
+</header>
+
+<div class="container">
+<div class="tabs">
+<button class="tab-btn active" data-tab="practice">Practice Questions</button>
+<button class="tab-btn" data-tab="quiz">Practice Quiz</button>
+<button class="tab-btn" data-tab="open-ended">Open-Ended Questions</button>
+<button class="tab-btn" data-tab="progress">My Progress</button>
+</div>
+
+<div id="practice" class="tab-content active">
+<h2>Practice Questions</h2>
+<p>Generate random math questions to practice. Select your topic and difficulty level.</p>
+
+<div class="form-group">
+<label for="practice-topic">Topic:</label>
+<select id="practice-topic">
+<option value="algebra">Algebra</option>
+<option value="geometry">Geometry</option>
+<option value="numbers">Numbers & Operations</option>
+<option value="fractions">Fractions</option>
+<option value="equations">Equations</option>
+<option value="graphs">Graphs</option>
+<option value="probability">Probability</option>
+<option value="measurement">Measurement</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="practice-difficulty">Difficulty:</label>
+<select id="practice-difficulty">
+<option value="basic">Basic</option>
+<option value="intermediate">Intermediate</option>
+<option value="advanced">Advanced</option>
+</select>
+</div>
+
+<button id="generate-question">Generate Question</button>
+
+<div id="practice-container" style="margin-top: 20px;"></div>
+</div>
+
+<div id="quiz" class="tab-content">
+<h2>Practice Quiz</h2>
+<p>Test your knowledge with these multiple-choice questions.</p>
+
+<div class="form-group">
+<label for="quiz-topic">Select Topic:</label>
+<select id="quiz-topic">
+<option value="all">All Topics</option>
+<option value="algebra">Algebra</option>
+<option value="geometry">Geometry</option>
+<option value="numbers">Numbers & Operations</option>
+<option value="fractions">Fractions</option>
+<option value="equations">Equations</option>
+<option value="graphs">Graphs</option>
+<option value="probability">Probability</option>
+<option value="measurement">Measurement</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="quiz-difficulty">Difficulty:</label>
+<select id="quiz-difficulty">
+<option value="all">All Levels</option>
+<option value="basic">Basic</option>
+<option value="intermediate">Intermediate</option>
+<option value="advanced">Advanced</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="quiz-length">Number of Questions:</label>
+<select id="quiz-length">
+<option value="10">10</option>
+<option value="20">20</option>
+<option value="30">30</option>
+<option value="50">50</option>
+<option value="100">100</option>
+</select>
+</div>
+
+<button id="start-quiz">Start Quiz</button>
+
+<div id="quiz-container" style="display: none;">
+<div class="progress-container">
+<div class="progress-bar">
+<div class="progress" id="quiz-progress"></div>
+</div>
+<p>Question <span id="current-question">1</span> of <span id="total-questions">10</span></p>
+</div>
+
+<div id="quiz-questions"></div>
+
+<div class="quiz-nav">
+<button id="prev-question" disabled>Previous</button>
+<button id="next-question">Next</button>
+</div>
+
+<button id="submit-quiz" style="display: none;">Submit Quiz</button>
+</div>
+
+<div id="quiz-results" class="results" style="display: none;">
+<h3>Quiz Results</h3>
+<div class="score">Your score: <span id="score">0</span>/<span id="total">10</span></div>
+<p id="score-message"></p>
+<button id="try-again">Try Another Quiz</button>
+<button id="review-answers">Review Answers</button>
+</div>
+</div>
+
+<div id="open-ended" class="tab-content">
+<h2>Open-Ended Questions</h2>
+<p>Practice with open-ended questions and learn from detailed solutions.</p>
+
+<div class="form-group">
+<label for="oe-topic">Select Topic:</label>
+<select id="oe-topic">
+<option value="all">All Topics</option>
+<option value="algebra">Algebra</option>
+<option value="geometry">Geometry</option>
+<option value="numbers">Numbers & Operations</option>
+<option value="fractions">Fractions</option>
+<option value="equations">Equations</option>
+<option value="graphs">Graphs</option>
+<option value="probability">Probability</option>
+<option value="measurement">Measurement</option>
+</select>
+</div>
+
+<div class="difficulty-selector">
+<label>Difficulty:</label>
+<button class="difficulty-btn active" data-level="all">All</button>
+<button class="difficulty-btn" data-level="basic">Basic</button>
+<button class="difficulty-btn" data-level="intermediate">Intermediate</button>
+<button class="difficulty-btn" data-level="advanced">Advanced</button>
+</div>
+
+<button id="load-oe-questions">Load Questions</button>
+
+<div id="oe-questions-container" style="margin-top: 20px;"></div>
+</div>
+
+<div id="progress" class="tab-content">
+<h2>My Progress</h2>
+<p>View your learning progress and quiz results.</p>
+
+<div class="report-summary">
+<div class="report-card">
+<h3>Weekly Usage</h3>
+<div class="chart-container" id="usage-chart"></div>
+<p id="usage-stats">0 minutes this week</p>
+</div>
+<div class="report-card">
+<h3>Average Score</h3>
+<div class="score" id="average-score">0%</div>
+<p>across all quizzes</p>
+</div>
+<div class="report-card">
+<h3>Topics Mastered</h3>
+<div class="score" id="topics-mastered">0</div>
+<p>out of 8 topics</p>
+</div>
+</div>
+
+<h3>Quiz History</h3>
+<div id="quiz-history"></div>
+
+<button id="export-data" style="margin-top: 20px;">Export Progress Data</button>
+</div>
+</div>
+
+<script>
+// Tab functionality
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabBtns.forEach(btn => {
+btn.addEventListener('click', () => {
+const tabId = btn.getAttribute('data-tab');
+
+tabBtns.forEach(b => b.classList.remove('active'));
+tabContents.forEach(c => c.classList.remove('active'));
+
+btn.classList.add('active');
+document.getElementById(tabId).classList.add('active');
+
+// If progress tab is selected, update the charts
+if (tabId === 'progress') {
+updateProgressCharts();
+}
+});
+});
+
+// Practice Questions Generator
+const questionGenerators = {
+algebra: {
+basic: () => {
+const a = Math.floor(Math.random() * 5) + 1;
+const b = Math.floor(Math.random() * 10) + 1;
+const c = Math.floor(Math.random() * 5) + 1;
+const op = ['+', '-'][Math.floor(Math.random() * 2)];
+return {
+question: `Solve for x: ${a}x ${op} ${b} = ${c*a + (op === '+' ? b : -b)}`,
+answer: c,
+steps: [
+`Start with the equation: ${a}x ${op} ${b} = ${c*a + (op === '+' ? b : -b)}`,
+op === '+' 
+? `Subtract ${b} from both sides: ${a}x = ${c*a}`
+: `Add ${b} to both sides: ${a}x = ${c*a}`,
+`Divide both sides by ${a}: x = ${c}`,
+`Solution: x = ${c}`
+]
+};
+},
+intermediate: () => {
+const a = Math.floor(Math.random() * 3) + 1;
+const b = Math.floor(Math.random() * 5) + 1;
+const c = Math.floor(Math.random() * 3) + 1;
+return {
+question: `Expand and simplify: (${a}x + ${b})(${c}x - ${b})`,
+answer: `${a*c}x² + ${(a*-b + b*c)}x - ${b*b}`,
+steps: [
+`Use the FOIL method: (First, Outer, Inner, Last)`,
+`First: ${a}x * ${c}x = ${a*c}x²`,
+`Outer: ${a}x * -${b} = -${a*b}x`,
+`Inner: ${b} * ${c}x = ${b*c}x`,
+`Last: ${b} * -${b} = -${b*b}`,
+`Combine like terms: ${a*c}x² + ${(a*-b + b*c)}x - ${b*b}`
+]
+};
+},
+advanced: () => {
+const a = Math.floor(Math.random() * 5) + 1;
+const b = Math.floor(Math.random() * 5) + 1;
+const c = Math.floor(Math.random() * 5) + 1;
+return {
+question: `Solve the system: y = ${a}x + ${b} and y = ${-c}x + ${a*b + b*c}`,
+answer: `x = ${b}, y = ${a*b + b}`,
+steps: [
+`Set the equations equal to each other: ${a}x + ${b} = ${-c}x + ${a*b + b*c}`,
+`Add ${c}x to both sides: ${a+c}x + ${b} = ${a*b + b*c}`,
+`Subtract ${b} from both sides: ${a+c}x = ${a*b + b*c - b}`,
+`Simplify right side: ${a+c}x = ${b*(a + c - 1)}`,
+`Divide both sides by ${a+c}: x = ${b}`,
+`Substitute x back into first equation: y = ${a}*${b} + ${b} = ${a*b + b}`,
+`Solution: (${b}, ${a*b + b})`
+]
+}
+}
+},
+geometry: {
+basic: () => {
+const l = Math.floor(Math.random() * 10) + 1;
+const w = Math.floor(Math.random() * 10) + 1;
+return {
+question: `Find the area of a rectangle with length ${l} and width ${w}`,
+answer: l * w,
+steps: [
+`Recall the formula for area of a rectangle: Area = length × width`,
+`Substitute the given values: Area = ${l} × ${w}`,
+`Calculate: Area = ${l * w}`,
+`Include units: ${l * w} square units`
+]
+};
+},
+intermediate: () => {
+const r = Math.floor(Math.random() * 10) + 1;
+return {
+question: `Find the circumference of a circle with radius ${r} (use π = 3.14)`,
+answer: 2 * 3.14 * r,
+steps: [
+`Recall the formula for circumference: C = 2πr`,
+`Substitute the given values: C = 2 × 3.14 × ${r}`,
+`Calculate: C = ${2 * 3.14 * r}`,
+`Include units: ${2 * 3.14 * r} units`
+]
+};
+},
+advanced: () => {
+const a = Math.floor(Math.random() * 5) + 3;
+const b = Math.floor(Math.random() * 5) + 3;
+return {
+question: `Find the length of the hypotenuse of a right triangle with legs ${a} and ${b}`,
+answer: Math.sqrt(a*a + b*b).toFixed(2),
+steps: [
+`Recall the Pythagorean theorem: a² + b² = c²`,
+`Substitute the given values: ${a}² + ${b}² = c² → ${a*a} + ${b*b} = c²`,
+`Add: ${a*a + b*b} = c²`,
+`Take the square root of both sides: c = √${a*a + b*b}`,
+`Calculate: c ≈ ${Math.sqrt(a*a + b*b).toFixed(2)}`,
+`Include units: ${Math.sqrt(a*a + b*b).toFixed(2)} units`
+]
+};
+}
+},
+numbers: {
+basic: () => {
+const num = Math.floor(Math.random() * 100) + 1;
+const factors = [];
+for (let i = 1; i <= num; i++) {
+if (num % i === 0) factors.push(i);
+}
+return {
+question: `List all factors of ${num}`,
+answer: factors.join(', '),
+steps: [
+`Find all numbers that divide evenly into ${num}`,
+`Start with 1: 1 × ${num} = ${num}`,
+`Check each number up to ${Math.floor(num/2)}`,
+`Factors found: ${factors.join(', ')}`,
+`Final answer: ${factors.join(', ')}`
+]
+};
+},
+intermediate: () => {
+const num1 = Math.floor(Math.random() * 20) + 1;
+const num2 = Math.floor(Math.random() * 20) + 1;
+const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+const gcdValue = gcd(num1, num2);
+return {
+question: `Find the greatest common divisor (GCD) of ${num1} and ${num2}`,
+answer: gcdValue,
+steps: [
+`List the factors of ${num1}: ${Array.from({length: num1}, (_, i) => i + 1).filter(x => num1 % x === 0).join(', ')}`,
+`List the factors of ${num2}: ${Array.from({length: num2}, (_, i) => i + 1).filter(x => num2 % x === 0).join(', ')}`,
+`Identify the common factors: ${Array.from({length: Math.min(num1, num2)}, (_, i) => i + 1).filter(x => num1 % x === 0 && num2 % x === 0).join(', ')}`,
+`The greatest common factor is ${gcdValue}`,
+`GCD(${num1}, ${num2}) = ${gcdValue}`
+]
+};
+},
+advanced: () => {
+const base = Math.floor(Math.random() * 5) + 2;
+const exp = Math.floor(Math.random() * 5) + 2;
+return {
+question: `Express ${Math.pow(base, exp)} as a power of ${base}`,
+answer: `${base}^${exp}`,
+steps: [
+`Recognize that ${Math.pow(base, exp)} is a power of ${base}`,
+`Calculate: ${base} × ${base} = ${base*base}`,
+`Continue multiplying by ${base} until you reach ${Math.pow(base, exp)}`,
+`Count the number of multiplications: ${exp}`,
+`Final answer: ${base}^${exp}`
+]
+};
+}
+},
+fractions: {
+basic: () => {
+const denom1 = Math.floor(Math.random() * 5) + 2;
+const denom2 = Math.floor(Math.random() * 5) + 2;
+const num1 = Math.floor(Math.random() * (denom1-1)) + 1;
+const num2 = Math.floor(Math.random() * (denom2-1)) + 1;
+const lcm = denom1 * denom2 / gcd(denom1, denom2);
+const sumNum = num1 * (lcm/denom1) + num2 * (lcm/denom2);
+const simplified = simplifyFraction(sumNum, lcm);
+return {
+question: `Add ${num1}/${denom1} + ${num2}/${denom2} and simplify`,
+answer: `${simplified.num}/${simplified.denom}`,
+steps: [
+`Find a common denominator: LCM of ${denom1} and ${denom2} is ${lcm}`,
+`Convert fractions: ${num1}/${denom1} = ${num1*(lcm/denom1)}/${lcm}, ${num2}/${denom2} = ${num2*(lcm/denom2)}/${lcm}`,
+`Add numerators: ${num1*(lcm/denom1)} + ${num2*(lcm/denom2)} = ${sumNum}`,
+`Combine: ${sumNum}/${lcm}`,
+`Simplify: ${simplified.num}/${simplified.denom}`
+]
+};
+
+function gcd(a, b) {
+return b === 0 ? a : gcd(b, a % b);
+}
+
+function simplifyFraction(num, denom) {
+const common = gcd(num, denom);
+return {num: num/common, denom: denom/common};
+}
+};
+},
+intermediate: () => {
+const whole = Math.floor(Math.random() * 3) + 1;
+const num = Math.floor(Math.random() * 3) + 1;
+const denom = num + Math.floor(Math.random() * 3) + 1;
+return {
+question: `Convert ${whole} ${num}/${denom} to an improper fraction`,
+answer: `${whole*denom + num}/${denom}`,
+steps: [
+`Multiply the whole number by the denominator: ${whole} × ${denom} = ${whole*denom}`,
+`Add the numerator: ${whole*denom} + ${num} = ${whole*denom + num}`,
+`Keep the same denominator: ${denom}`,
+`Final answer: ${whole*denom + num}/${denom}`
+]
+};
+},
+advanced: () => {
+const num1 = Math.floor(Math.random() * 5) + 1;
+const denom1 = num1 + Math.floor(Math.random() * 5) + 1;
+const num2 = Math.floor(Math.random() * 5) + 1;
+const denom2 = num2 + Math.floor(Math.random() * 5) + 1;
+return {
+question: `Divide ${num1}/${denom1} by ${num2}/${denom2}`,
+answer: `${num1*denom2}/${denom1*num2}`,
+steps: [
+`Remember that dividing by a fraction is the same as multiplying by its reciprocal`,
+`Find the reciprocal of the second fraction: ${denom2}/${num2}`,
+`Multiply the fractions: ${num1}/${denom1} × ${denom2}/${num2} = ${num1*denom2}/${denom1*num2}`,
+`Final answer: ${num1*denom2}/${denom1*num2}`
+]
+};
+}
+},
+equations: {
+basic: () => {
+const a = Math.floor(Math.random() * 5) + 1;
+const b = Math.floor(Math.random() * 10) + 1;
+const c = a * (Math.floor(Math.random() * 5) + 1 + b;
+return {
+question: `Solve for x: ${a}x + ${b} = ${c}`,
+answer: (c - b)/a,
+steps: [
+`Subtract ${b} from both sides: ${a}x = ${c - b}`,
+`Divide both sides by ${a}: x = ${(c - b)/a}`,
+`Solution: x = ${(c - b)/a}`
+]
+};
+},
+intermediate: () => {
+const a = Math.floor(Math.random() * 3) + 1;
+const b = Math.floor(Math.random() * 5) + 1;
+const c = Math.floor(Math.random() * 3) + 1;
+const d = Math.floor(Math.random() * 5) + 1;
+return {
+question: `Solve the system: ${a}x + ${b}y = ${a*c + b*d} and ${b}x - ${a}y = ${b*c - a*d}`,
+answer: `x = ${c}, y = ${d}`,
+steps: [
+`Use substitution or elimination method`,
+`From first equation: ${a}x + ${b}y = ${a*c + b*d}`,
+`From second equation: ${b}x - ${a}y = ${b*c - a*d}`,
+`Multiply first by ${b} and second by ${a}: ${a*b}x + ${b*b}y = ${b*(a*c + b*d)} and ${a*b}x - ${a*a}y = ${a*(b*c - a*d)}`,
+`Subtract equations: ${b*b + a*a}y = ${b*(a*c + b*d) - a*(b*c - a*d)} → y = ${d}`,
+`Substitute y back into first equation: ${a}x + ${b*${d} = ${a*c + b*d} → x = ${c}`,
+`Solution: x = ${c}, y = ${d}`
+]
+};
+},
+advanced: () => {
+const a = Math.floor(Math.random() * 3) + 1;
+const b = Math.floor(Math.random() * 5) + 1;
+const c = Math.floor(Math.random() * 3) + 1;
+const discriminant = b*b - 4*a*c;
+return {
+question: `Find the discriminant of the quadratic equation ${a}x² + ${b}x + ${c} = 0`,
+answer: discriminant,
+steps: [
+`Recall the formula for discriminant: D = b² - 4ac`,
+`Substitute the coefficients: D = ${b}² - 4 × ${a} × ${c}`,
+`Calculate: D = ${b*b} - ${4*a*c}`,
+`Final answer: D = ${discriminant}`,
+discriminant > 0 
+? `The equation has two distinct real roots`
+: discriminant === 0
+? `The equation has exactly one real root`
+: `The equation has two complex roots`
+]
+};
+}
+},
+graphs: {
+basic: () => {
+const m = Math.floor(Math.random() * 5) + 1;
+const b = Math.floor(Math.random() * 5) + 1;
+return {
+question: `What is the slope and y-intercept of the line y = ${m}x + ${b}?`,
+answer: `Slope: ${m}, y-intercept: ${b}`,
+steps: [
+`The equation is in slope-intercept form: y = mx + b`,
+`m represents the slope, b represents the y-intercept`,
+`For y = ${m}x + ${b}:`,
+`Slope (m) = ${m}`,
+`y-intercept (b) = ${b} (the point (0, ${b}))`
+]
+};
+},
+intermediate: () => {
+const x1 = Math.floor(Math.random() * 10) - 5;
+const y1 = Math.floor(Math.random() * 10) - 5;
+const x2 = Math.floor(Math.random() * 10) - 5;
+const y2 = Math.floor(Math.random() * 10) - 5;
+const m = (y2 - y1)/(x2 - x1);
+const b = y1 - m * x1;
+return {
+question: `Find the equation of the line passing through (${x1}, ${y1}) and (${x2}, ${y2})`,
+answer: `y = ${m}x + ${b}`,
+steps: [
+`Calculate the slope: m = (y₂ - y₁)/(x₂ - x₁) = (${y2} - ${y1})/(${x2} - ${x1}) = ${m}`,
+`Use point-slope form: y - y₁ = m(x - x₁)`,
+`Substitute point (${x1}, ${y1}) and slope ${m}: y - ${y1} = ${m}(x - ${x1})`,
+`Convert to slope-intercept form: y = ${m}x - ${m*x1} + ${y1}`,
+`Simplify: y = ${m}x + ${b}`
+]
+};
+},
+advanced: () => {
+const a = Math.floor(Math.random() * 3) + 1;
+const h = Math.floor(Math.random() * 5) - 2;
+const k = Math.floor(Math.random() * 5) - 2;
+return {
+question: `Identify the vertex of the parabola y = ${a}(x - ${h})² + ${k}`,
+answer: `(${h}, ${k})`,
+steps: [
+`The equation is in vertex form: y = a(x - h)² + k`,
+`The vertex of the parabola is at (h, k)`,
+`For y = ${a}(x - ${h})² + ${k}:`,
+`Vertex is at (${h}, ${k})`,
+`The parabola opens ${a > 0 ? 'upward' : 'downward'} and is ${Math.abs(a) > 1 ? 'narrower' : Math.abs(a) < 1 ? 'wider' : 'standard'} than y = x²`
+]
+};
+}
+},
+probability: {
+basic: () => {
+const sides = Math.floor(Math.random() * 4) + 4; // 4-7 sides
+const color = ['red', 'blue', 'green', 'yellow'][Math.floor(Math.random() * 4)];
+return {
+question: `A spinner has ${sides} equal sections, one of which is ${color}. What is the probability of landing on ${color}?`,
+answer: `1/${sides}`,
+steps: [
+`Probability = (Number of favorable outcomes) / (Total possible outcomes)`,
+`Favorable outcome: landing on ${color} (1 section)`,
+`Total outcomes: ${sides} sections`,
+`Probability = 1/${sides}`
+]
+};
+},
+intermediate: () => {
+const red = Math.floor(Math.random() * 5) + 1;
+const blue = Math.floor(Math.random() * 5) + 1;
+const green = Math.floor(Math.random() * 5) + 1;
+const total = red + blue + green;
+return {
+question: `A bag has ${red} red, ${blue} blue, and ${green} green marbles. What is the probability of drawing a red or blue marble?`,
+answer: `${red + blue}/${total}`,
+steps: [
+`Total marbles = ${red} + ${blue} + ${green} = ${total}`,
+`Favorable outcomes = red or blue = ${red} + ${blue} = ${red + blue}`,
+`Probability = ${red + blue}/${total}`,
+`Can be simplified to ${(red + blue)/gcd(red + blue, total)}/${total/gcd(red + blue, total)}`
+]
+};
+},
+advanced: () => {
+const probA = Math.floor(Math.random() * 3 + 1)/10; // 0.1 to 0.3
+const probB = Math.floor(Math.random() * 3 + 1)/10; // 0.1 to 0.3
+return {
+question: `Events A and B are independent with P(A) = ${probA} and P(B) = ${probB}. What is P(A and B)?`,
+answer: probA * probB,
+steps: [
+`For independent events, P(A and B) = P(A) × P(B)`,
+`Calculate: ${probA} × ${probB} = ${probA * probB}`,
+`Final answer: ${probA * probB}`
+]
+};
+}
+},
+measurement: {
+basic: () => {
+const cm = Math.floor(Math.random() * 90) + 10;
+return {
+question: `Convert ${cm} centimeters to meters`,
+answer: cm/100,
+steps: [
+`1 meter = 100 centimeters`,
+`To convert cm to m, divide by 100`,
+`${cm} cm ÷ 100 = ${cm/100} m`,
+`Final answer: ${cm/100} meters`
+]
+};
+},
+intermediate: () => {
+const f = Math.floor(Math.random() * 50) + 50;
+const c = (f - 32) * 5/9;
+return {
+question: `Convert ${f}°F to Celsius (use formula C = (F - 32) × 5/9)`,
+answer: c.toFixed(1),
+steps: [
+`Apply the formula: C = (${f} - 32) × 5/9`,
+`Subtract 32: ${f} - 32 = ${f - 32}`,
+`Multiply by 5/9: ${f - 32} × 5/9 = ${((f - 32) * 5/9).toFixed(1)}`,
+`Final answer: ${((f - 32) * 5/9).toFixed(1)}°C`
+]
+};
+},
+advanced: () => {
+const km = Math.floor(Math.random() * 90) + 10;
+const miles = km * 0.621371;
+return {
+question: `Convert ${km} kilometers to miles (1 km ≈ 0.621371 miles)`,
+answer: miles.toFixed(2),
+steps: [
+`Multiply kilometers by conversion factor: ${km} × 0.621371`,
+`Calculate: ${km} × 0.621371 ≈ ${miles.toFixed(2)}`,
+`Final answer: ${miles.toFixed(2)} miles`
+]
+};
+}
+}
+};
+
+document.getElementById('generate-question').addEventListener('click', generatePracticeQuestion);
+
+function generatePracticeQuestion() {
+const topic = document.getElementById('practice-topic').value;
+const difficulty = document.getElementById('practice-difficulty').value;
+
+if (questionGenerators[topic] && questionGenerators[topic][difficulty]) {
+const question = questionGenerators[topic][difficulty]();
+displayPracticeQuestion(question);
+trackUsage('practice', topic);
+} else {
+document.getElementById('practice-container').innerHTML = 
+'<p>No question generator available for this selection.</p>';
+}
+}
+
+function displayPracticeQuestion(question) {
+const container = document.getElementById('practice-container');
+container.innerHTML = `
+<div class="practice-question">
+<h3>${question.question} <span class="question-level level-${document.getElementById('practice-difficulty').value}">
+${document.getElementById('practice-difficulty').value}</span></h3>
+<button class="show-solution-btn">Show Solution</button>
+<div class="solution" style="display: none;">
+<h4>Solution:</h4>
+${question.steps.map(step => `<div class="step">${step}</div>`).join('')}
+<p><strong>Answer:</strong> ${question.answer}</p>
+</div>
+</div>
+`;
+
+container.querySelector('.show-solution-btn').addEventListener('click', function() {
+const solutionDiv = this.nextElementSibling;
+solutionDiv.style.display = solutionDiv.style.display === 'none' ? 'block' : 'none';
+this.textContent = solutionDiv.style.display === 'none' ? 'Show Solution' : 'Hide Solution';
+});
+}
+
+// Quiz functionality
+const quizData = {
+algebra: [
+{ question: "Solve for x: 2x + 5 = 15", options: ["x = 5", "x = 10", "x = 7.5", "x = 20"], answer: 0, level: "basic" },
+{ question: "Simplify: 3(x + 4) - 2x", options: ["x + 12", "5x + 4", "x + 4", "3x + 10"], answer: 0, level: "basic" },
+{ question: "Factor completely: x² - 9", options: ["(x-3)(x+3)", "(x-9)(x+1)", "(x-3)²", "Doesn't factor"], answer: 0, level: "basic" },
+{ question: "Solve the system: y = 2x + 1 and y = -x + 4", options: ["(1,3)", "(3,1)", "(0,4)", "(4,0)"], answer: 0, level: "intermediate" },
+{ question: "Expand: (2x - 3)²", options: ["4x² - 9", "4x² - 6x + 9", "4x² - 12x + 9", "2x² - 12x + 9"], answer: 2, level: "intermediate" },
+{ question: "What is the slope of y = -3x + 7?", options: ["3", "-3", "7", "-7"], answer: 1, level: "basic" },
+{ question: "Solve for x: 5x - 8 = 3x + 2", options: ["x = 5", "x = -5", "x = 3", "x = -3"], answer: 0, level: "basic" },
+{ question: "Which is the solution to x² + 5x + 6 = 0?", options: ["x=2, x=3", "x=-2, x=-3", "x=1, x=6", "No real solutions"], answer: 1, level: "intermediate" },
+{ question: "Simplify: (3x³y²)(4xy⁴)", options: ["12x³y⁶", "12x⁴y⁶", "7x⁴y⁶", "12x⁴y⁸"], answer: 1, level: "intermediate" },
+{ question: "What is the y-intercept of y = ½x - 4?", options: ["(0, ½)", "(0, -4)", "(½, 0)", "(-4, 0)"], answer: 1, level: "basic" },
+],
+geometry: [
+{ question: "What is the area of a rectangle with length 8cm and width 5cm?", options: ["13cm²", "40cm²", "26cm²", "45cm²"], answer: 1, level: "basic" },
+{ question: "How many degrees are in the angles of a triangle?", options: ["90°", "180°", "270°", "360°"], answer: 1, level: "basic" },
+{ question: "What is the circumference of a circle with radius 7cm? (π≈3.14)", options: ["21.98cm", "43.96cm", "153.86cm", "14cm"], answer: 1, level: "basic" },
+{ question: "A right triangle has legs 6 and 8. What is the hypotenuse?", options: ["10", "14", "7", "12"], answer: 0, level: "intermediate" },
+{ question: "What is the volume of a cube with edge length 3m?", options: ["9m³", "27m³", "6m³", "12m³"], answer: 1, level: "basic" },
+{ question: "How many edges does a rectangular prism have?", options: ["6", "8", "12", "16"], answer: 2, level: "basic" },
+{ question: "Two angles are complementary. One is 35°. What is the other?", options: ["55°", "65°", "145°", "35°"], answer: 0, level: "basic" },
+{ question: "What is the area of a triangle with base 10 and height 8?", options: ["18", "40", "80", "160"], answer: 1, level: "basic" },
+{ question: "A circle has diameter 12. What is its area? (π≈3.14)", options: ["37.68", "113.04", "452.16", "18.84"], answer: 1, level: "intermediate" },
+{ question: "What is the surface area of a cube with edge length 4cm?", options: ["16cm²", "64cm²", "96cm²", "128cm²"], answer: 2, level: "intermediate" },
+],
+numbers: [
+{ question: "What is the HCF of 12 and 18?", options: ["2", "3", "6", "9"], answer: 2, level: "basic" },
+{ question: "What is 15% of 200?", options: ["15", "20", "30", "45"], answer: 2, level: "basic" },
+{ question: "Which is a prime number?", options: ["12", "15", "17", "21"], answer: 2, level: "basic" },
+{ question: "What is 3⁴?", options: ["12", "27", "64", "81"], answer: 3, level: "basic" },
+{ question: "Round 4.567 to the nearest hundredth.", options: ["4.5", "4.56", "4.57", "5"], answer: 2, level: "basic" },
+{ question: "What is the LCM of 4 and 6?", options: ["2", "12", "24", "48"], answer: 1, level: "basic" },
+{ question: "Which is equivalent to 0.375?", options: ["3/8", "1/4", "5/16", "7/20"], answer: 0, level: "intermediate" },
+{ question: "What is √144?", options: ["11", "12", "13", "14"], answer: 1, level: "basic" },
+{ question: "Evaluate: 2 + 3 × 4", options: ["20", "14", "24", "9"], answer: 1, level: "basic" },
+{ question: "Which is not a perfect square?", options: ["25", "36", "48", "64"], answer: 2, level: "basic" },
+],
+fractions: [
+{ question: "What is 1/4 + 1/2?", options: ["1/6", "2/6", "3/4", "5/4"], answer: 2, level: "basic" },
+{ question: "Simplify 15/20", options: ["1/2", "3/4", "5/6", "15/20"], answer: 1, level: "basic" },
+{ question: "What is 2/3 × 3/5?", options: ["6/15", "2/5", "5/8", "1"], answer: 1, level: "basic" },
+{ question: "Convert 0.6 to a fraction", options: ["3/5", "6/10", "1/6", "2/3"], answer: 0, level: "basic" },
+{ question: "What is 5/6 - 1/3?", options: ["4/3", "1/2", "1/3", "4/6"], answer: 1, level: "basic" },
+{ question: "Divide 3/4 by 2/3", options: ["1/2", "9/8", "6/12", "8/9"], answer: 1, level: "intermediate" },
+{ question: "Which is greater: 4/7 or 5/9?", options: ["4/7", "5/9", "Equal", "Can't compare"], answer: 0, level: "intermediate" },
+{ question: "What is 2 1/3 as an improper fraction?", options: ["7/3", "5/3", "6/3", "9/3"], answer: 0, level: "basic" },
+{ question: "Multiply 1/2 × 2/3 × 3/4", options: ["6/24", "1/4", "3/9", "2/9"], answer: 1, level: "intermediate" },
+{ question: "What is the reciprocal of 3/5?", options: ["3/5", "5/3", "-3/5", "-5/3"], answer: 1, level: "basic" },
+],
+equations: [
+{ question: "Solve for x: x² - 9 = 0", options: ["x = 3", "x = -3", "x = ±3", "No solution"], answer: 2, level: "intermediate" },
+{ question: "Solve the system: y = 2x and y = x + 3", options: ["(1, 2)", "(2, 4)", "(3, 6)", "(3, 3)"], answer: 2, level: "intermediate" },
+{ question: "Solve: 3(x - 2) = 12", options: ["x = 2", "x = 4", "x = 6", "x = 8"], answer: 2, level: "basic" },
+{ question: "Solve for y: 2y + 7 = y - 3", options: ["y = 10", "y = -10", "y = 4", "y = -4"], answer: 1, level: "basic" },
+{ question: "Solve the inequality: 5x - 3 > 12", options: ["x > 3", "x < 3", "x > 5", "x < 5"], answer: 0, level: "intermediate" },
+{ question: "Which is a solution to x² - 5x + 6 = 0?", options: ["x = 1", "x = 2", "x = 4", "x = 5"], answer: 1, level: "intermediate" },
+{ question: "Solve: |x - 3| = 5", options: ["x = 8", "x = -2", "x = 8 or -2", "x = 2 or -8"], answer: 2, level: "advanced" },
+{ question: "Solve for x: 1/x + 1/(x+1) = 1/2", options: ["x = 1", "x = 2", "x = 1 or -2", "x = 2 or -1"], answer: 3, level: "advanced" },
+{ question: "Solve the system: 2x + y = 5 and x - y = 1", options: ["(2,1)", "(1,2)", "(3,2)", "(2,3)"], answer: 0, level: "intermediate" },
+{ question: "Solve: √(x + 5) = 3", options: ["x = 4", "x = 9", "x = 14", "x = 2"], answer: 0, level: "intermediate" },
+],
+graphs: [
+{ question: "What is the y-intercept of y = 3x - 2?", options: ["(0, 3)", "(0, -2)", "(3, 0)", "(-2, 0)"], answer: 1, level: "basic" },
+{ question: "Which point lies on the line y = 2x + 1?", options: ["(1, 3)", "(2, 4)", "(0, 2)", "(1, 2)"], answer: 0, level: "basic" },
+{ question: "What is the slope of the line through (1,2) and (3,8)?", options: ["2", "3", "4", "6"], answer: 1, level: "basic" },
+{ question: "Which equation represents a vertical line?", options: ["y = 2", "x = 3", "y = x", "y = 2x + 1"], answer: 1, level: "intermediate" },
+{ question: "What is the vertex of y = (x-2)² + 3?", options: ["(-2,3)", "(2,3)", "(-2,-3)", "(2,-3)"], answer: 1, level: "intermediate" },
+{ question: "Which graph represents y = -x²?", options: ["Upward parabola", "Downward parabola", "Straight line", "Curved line"], answer: 1, level: "intermediate" },
+{ question: "What is the equation of a line with slope 0.5 and y-intercept -1?", options: ["y = -1x + 0.5", "y = 0.5x - 1", "y = -0.5x + 1", "y = x - 0.5"], answer: 1, level: "basic" },
+{ question: "Which point is in the solution set of y ≤ 2x + 1?", options: ["(0,0)", "(1,4)", "(2,5)", "(-1,-1)"], answer: 0, level: "intermediate" },
+{ question: "What is the axis of symmetry for y = x² - 4x + 3?", options: ["x = 1", "x = 2", "x = 3", "x = 4"], answer: 1, level: "advanced" },
+{ question: "Which function represents exponential growth?", options: ["y = 2x + 3", "y = -2ˣ", "y = 0.5ˣ", "y = 2ˣ"], answer: 3, level: "advanced" },
+],
+probability: [
+{ question: "What is the probability of flipping heads on a fair coin?", options: ["0.1", "0.25", "0.5", "0.75"], answer: 2, level: "basic" },
+{ question: "If you roll a die, what's the probability of getting an even number?", options: ["1/6", "1/3", "1/2", "2/3"], answer: 2, level: "basic" },
+{ question: "A bag has 3 red and 2 blue marbles. Probability of drawing red?", options: ["0.3", "0.4", "0.5", "0.6"], answer: 3, level: "basic" },
+{ question: "Probability of rolling two dice and getting a sum of 7?", options: ["1/6", "1/12", "1/36", "7/36"], answer: 0, level: "intermediate" },
+{ question: "If P(A)=0.3 and P(B)=0.4, and independent, P(A and B)?", options: ["0.7", "0.12", "0.1", "1.2"], answer: 1, level: "intermediate" },
+{ question: "Probability of not rolling a 6 on a die?", options: ["1/6", "5/6", "1/3", "2/3"], answer: 1, level: "basic" },
+{ question: "Combination of choosing 2 items from 5?", options: ["10", "20", "25", "32"], answer: 0, level: "advanced" },
+{ question: "Permutation of arranging 3 books out of 5?", options: ["10", "30", "60", "125"], answer: 2, level: "advanced" },
+{ question: "Probability of drawing 2 aces from a deck without replacement?", options: ["4/52", "4/52 × 3/51", "4/52 × 4/52", "1/52 × 1/51"], answer: 1, level: "advanced" },
+{ question: "Expected value of rolling a die?", options: ["2.5", "3", "3.5", "4"], answer: 2, level: "intermediate" },
+],
+measurement: [
+{ question: "Convert 3.5km to meters", options: ["35m", "350m", "3500m", "35000m"], answer: 2, level: "basic" },
+{ question: "How many milliliters are in 2.5 liters?", options: ["25ml", "250ml", "2500ml", "25000ml"], answer: 2, level: "basic" },
+{ question: "Convert 2 hours 30 minutes to minutes", options: ["90", "120", "150", "180"], answer: 2, level: "basic" },
+{ question: "What is 1.2kg in grams?", options: ["12g", "120g", "1200g", "12000g"], answer: 2, level: "basic" },
+{ question: "Convert 5 miles to km (1 mile ≈ 1.6km)", options: ["3.125km", "6.5km", "8km", "10km"], answer: 2, level: "intermediate" },
+{ question: "How many cm³ in 1 liter?", options: ["10", "100", "1000", "10000"], answer: 2, level: "basic" },
+{ question: "Convert 45°C to Fahrenheit (F = C×9/5 + 32)", options: ["77°F", "103°F", "113°F", "140°F"], answer: 2, level: "intermediate" },
+{ question: "What is 1 hectare in m²?", options: ["100", "1000", "10000", "100000"], answer: 2, level: "intermediate" },
+{ question: "Convert 100km/h to m/s (approx.)", options: ["10", "18", "28", "36"], answer: 2, level: "advanced" },
+{ question: "How many acres in 1 square mile? (1 acre = 43,560 ft²)", options: ["160", "320", "640", "1280"], answer: 2, level: "advanced" },
+]
+};
+
+// Open-ended questions database
+const openEndedQuestions = {
+algebra: [
+{
+question: "Explain how to solve the equation 3x + 5 = 17 step by step.",
+solution: [
+"Step 1: Start with the equation 3x + 5 = 17",
+"Step 2: Subtract 5 from both sides to isolate the term with x: 3x = 17 - 5 → 3x = 12",
+"Step 3: Divide both sides by 3 to solve for x: x = 12 ÷ 3 → x = 4",
+"Step 4: Verify the solution by substituting back into the original equation: 3(4) + 5 = 12 + 5 = 17",
+"Conclusion: The solution is x = 4"
+],
+level: "basic"
+},
+{
+question: "Factor the quadratic expression x² - 5x + 6 and explain each step.",
+solution: [
+"Step 1: Identify the quadratic expression to factor: x² - 5x + 6",
+"Step 2: Look for two numbers that multiply to the constant term (6) and add to the coefficient of x (-5)",
+"Step 3: The numbers -2 and -3 satisfy these conditions because (-2) × (-3) = 6 and (-2) + (-3) = -5",
+"Step 4: Write the factored form using these numbers: (x - 2)(x - 3)",
+"Step 5: Verify by expanding: (x - 2)(x - 3) = x² - 3x - 2x + 6 = x² - 5x + 6",
+"Conclusion: The factored form is (x - 2)(x - 3)"
+],
+level: "intermediate"
+},
+{
+question: "Solve the system of equations: 2x + y = 7 and 3x - 2y = 5. Show all steps.",
+solution: [
+"Step 1: Solve the first equation for y: y = 7 - 2x",
+"Step 2: Substitute this expression for y into the second equation: 3x - 2(7 - 2x) = 5",
+"Step 3: Distribute and simplify: 3x - 14 + 4x = 5 → 7x - 14 = 5",
+"Step 4: Solve for x: 7x = 19 → x = 19/7 ≈ 2.714",
+"Step 5: Substitute x back into the expression for y: y = 7 - 2(19/7) = 49/7 - 38/7 = 11/7 ≈ 1.571",
+"Step 6: Verify the solution in both original equations",
+"Conclusion: The solution is x = 19/7, y = 11/7"
+],
+level: "advanced"
+}
+],
+geometry: [
+{
+question: "Calculate the area of a triangle with base 8cm and height 5cm. Explain your reasoning.",
+solution: [
+"Step 1: Recall the formula for area of a triangle: Area = (base × height) / 2",
+"Step 2: Identify the given measurements: base = 8cm, height = 5cm",
+"Step 3: Substitute the values into the formula: Area = (8 × 5) / 2",
+"Step 4: Perform the multiplication: 8 × 5 = 40",
+"Step 5: Divide by 2: 40 ÷ 2 = 20",
+"Step 6: Include proper units: cm²",
+"Conclusion: The area of the triangle is 20cm²"
+],
+level: "basic"
+},
+{
+question: "Prove that the sum of angles in a triangle is 180 degrees.",
+solution: [
+"Step 1: Draw any triangle ABC",
+"Step 2: Draw a line through point A parallel to side BC",
+"Step 3: Identify alternate angles: ∠ABC = ∠BAP and ∠ACB = ∠CAQ (where P and Q are points on the parallel line)",
+"Step 4: Recognize that angles on a straight line sum to 180°: ∠BAP + ∠BAC + ∠CAQ = 180°",
+"Step 5: Substitute the equal angles: ∠ABC + ∠BAC + ∠ACB = 180°",
+"Conclusion: The sum of angles in triangle ABC is 180°"
+],
+level: "advanced"
+}
+]
+};
+
+let currentQuiz = [];
+let currentQuestionIndex = 0;
+let userAnswers = [];
+let quizStartTime;
+
+document.getElementById('start-quiz').addEventListener('click', startQuiz);
+document.getElementById('prev-question').addEventListener('click', prevQuestion);
+document.getElementById('next-question').addEventListener('click', nextQuestion);
+document.getElementById('submit-quiz').addEventListener('click', submitQuiz);
+document.getElementById('try-again').addEventListener('click', resetQuiz);
+document.getElementById('review-answers').addEventListener('click', reviewAnswers);
+document.getElementById('load-oe-questions').addEventListener('click', loadOpenEndedQuestions);
+document.querySelectorAll('.difficulty-btn').forEach(btn => {
+btn.addEventListener('click', () => {
+document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+loadOpenEndedQuestions();
+});
+});
+document.getElementById('export-data').addEventListener('click', exportProgressData);
+
+function startQuiz() {
+const topic = document.getElementById('quiz-topic').value;
+const difficulty = document.getElementById('quiz-difficulty').value;
+const length = parseInt(document.getElementById('quiz-length').value);
+
+// Get questions for the selected topic and difficulty
+if (topic === 'all') {
+currentQuiz = [];
+for (const t in quizData) {
+currentQuiz = currentQuiz.concat(
+difficulty === 'all'
+? quizData[t]
+: quizData[t].filter(q => q.level === difficulty)
+);
+}
+} else {
+currentQuiz = difficulty === 'all'
+? [...quizData[topic]]
+: quizData[topic].filter(q => q.level === difficulty);
+}
+
+if (currentQuiz.length === 0) {
+alert('No questions available for this selection. Try a different topic or difficulty.');
+return;
+}
+
+// Shuffle and select the requested number of questions
+currentQuiz = shuffleArray(currentQuiz).slice(0, length);
+
+// Initialize quiz state
+currentQuestionIndex = 0;
+userAnswers = new Array(currentQuiz.length).fill(null);
+quizStartTime = new Date();
+
+// Show quiz container
+document.getElementById('quiz-container').style.display = 'block';
+document.getElementById('start-quiz').style.display = 'none';
+document.getElementById('quiz-results').style.display = 'none';
+
+// Update progress
+updateQuizProgress();
+
+// Load first question
+loadQuestion();
+}
+
+function loadQuestion() {
+const question = currentQuiz[currentQuestionIndex];
+const quizQuestionsDiv = document.getElementById('quiz-questions');
+
+quizQuestionsDiv.innerHTML = `
+<div class="quiz-question">
+<h3>${question.question} <span class="question-level level-${question.level}">${question.level}</span></h3>
+<div class="options">
+${question.options.map((option, i) => `
+<div class="option ${userAnswers[currentQuestionIndex] === i ? 'selected' : ''}"
+data-index="${i}">${option}</div>
+`).join('')}
+</div>
+</div>
+`;
+
+// Add event listeners to options
+document.querySelectorAll('.option').forEach(option => {
+option.addEventListener('click', selectAnswer);
+});
+
+// Update nav buttons
+document.getElementById('prev-question').disabled = currentQuestionIndex === 0;
+document.getElementById('next-question').style.display =
+currentQuestionIndex === currentQuiz.length - 1 ? 'none' : 'block';
+document.getElementById('submit-quiz').style.display =
+currentQuestionIndex === currentQuiz.length - 1 ? 'block' : 'none';
+}
+
+function selectAnswer(e) {
+const selectedIndex = parseInt(e.target.getAttribute('data-index'));
+userAnswers[currentQuestionIndex] = selectedIndex;
+
+// Update UI
+document.querySelectorAll('.option').forEach(opt => {
+opt.classList.remove('selected');
+});
+e.target.classList.add('selected');
+}
+
+function prevQuestion() {
+if (currentQuestionIndex > 0) {
+currentQuestionIndex--;
+loadQuestion();
+updateQuizProgress();
+}
+}
+
+function nextQuestion() {
+if (currentQuestionIndex < currentQuiz.length - 1) {
+currentQuestionIndex++;
+loadQuestion();
+updateQuizProgress();
+}
+}
+
+function updateQuizProgress() {
+document.getElementById('current-question').textContent = currentQuestionIndex + 1;
+document.getElementById('total-questions').textContent = currentQuiz.length;
+document.getElementById('quiz-progress').style.width =
+`${(currentQuestionIndex + 1) / currentQuiz.length * 100}%`;
+}
+
+function submitQuiz() {
+// Calculate score
+let score = 0;
+currentQuiz.forEach((q, i) => {
+if (userAnswers[i] === q.answer) {
+score++;
+}
+});
+
+// Calculate time spent
+const timeSpent = Math.round((new Date() - quizStartTime) / 1000 / 60); // in minutes
+
+// Save quiz results
+saveQuizResults(score, currentQuiz.length, timeSpent);
+
+// Show results
+document.getElementById('quiz-container').style.display = 'none';
+document.getElementById('quiz-results').style.display = 'block';
+document.getElementById('score').textContent = score;
+document.getElementById('total').textContent = currentQuiz.length;
+
+// Score message
+const percentage = Math.round(score / currentQuiz.length * 100);
+let message = '';
+if (percentage >= 80) {
+message = 'Excellent work! You have a strong understanding of this topic.';
+} else if (percentage >= 60) {
+message = 'Good job! You understand most concepts but could use some more practice.';
+} else if (percentage >= 40) {
+message = 'Keep practicing! Review the topics you struggled with.';
+} else {
+message = 'Don\'t worry! Everyone starts somewhere. Try reviewing the basics and try again.';
+}
+document.getElementById('score-message').textContent = message;
+
+// Track usage
+trackUsage('quiz', document.getElementById('quiz-topic').value, timeSpent);
+}
+
+function resetQuiz() {
+document.getElementById('quiz-results').style.display = 'none';
+document.getElementById('start-quiz').style.display = 'block';
+}
+
+function reviewAnswers() {
+const quizQuestionsDiv = document.getElementById('quiz-questions');
+quizQuestionsDiv.innerHTML = '';
+
+currentQuiz.forEach((q, i) => {
+const questionDiv = document.createElement('div');
+questionDiv.className = 'quiz-question';
+
+let status = '';
+if (userAnswers[i] === q.answer) {
+status = '<span style="color:green">✓ Correct</span>';
+} else {
+status = `<span style="color:red">✗ Incorrect (Correct: ${q.options[q.answer]})</span>`;
+}
+
+questionDiv.innerHTML = `
+<h3>Question ${i + 1}: ${q.question} ${status}</h3>
+<div class="options">
+${q.options.map((option, j) => `
+<div class="option
+${userAnswers[i] === j ? (j === q.answer ? 'correct' : 'incorrect') : ''}
+${j === q.answer ? 'correct' : ''}">
+${option}
+</div>
+`).join('')}
+</div>
+`;
+
+quizQuestionsDiv.appendChild(questionDiv);
+});
+
+document.getElementById('quiz-container').style.display = 'block';
+document.getElementById('quiz-results').style.display = 'none';
+document.querySelector('.quiz-nav').style.display = 'none';
+document.getElementById('submit-quiz').style.display = 'none';
+}
+
+function loadOpenEndedQuestions() {
+const topic = document.getElementById('oe-topic').value;
+const difficulty = document.querySelector('.difficulty-btn.active').getAttribute('data-level');
+
+let questions = [];
+
+if (topic === 'all') {
+for (const t in openEndedQuestions) {
+questions = questions.concat(
+difficulty === 'all'
+? openEndedQuestions[t]
+: openEndedQuestions[t].filter(q => q.level === difficulty)
+);
+}
+} else if (openEndedQuestions[topic]) {
+questions = difficulty === 'all'
+? [...openEndedQuestions[topic]]
+: openEndedQuestions[topic].filter(q => q.level === difficulty);
+}
+
+if (questions.length === 0) {
+document.getElementById('oe-questions-container').innerHTML =
+'<p>No questions available for this selection. Try a different topic or difficulty.</p>';
+return;
+}
+
+// Shuffle and select 10 questions
+questions = shuffleArray(questions).slice(0, 10);
+
+const container = document.getElementById('oe-questions-container');
+container.innerHTML = '';
+
+questions.forEach((q, i) => {
+const questionDiv = document.createElement('div');
+questionDiv.className = 'open-ended-question';
+
+questionDiv.innerHTML = `
+<h3>Question ${i + 1}: ${q.question} <span class="question-level level-${q.level}">${q.level}</span></h3>
+<button class="show-solution-btn" data-index="${i}">Show Solution</button>
+<div class="open-ended-solution" id="solution-${i}">
+<h4>Solution:</h4>
+${q.solution.map(step => `<div class="step">${step}</div>`).join('')}
+</div>
+`;
+
+container.appendChild(questionDiv);
+});
+
+// Add event listeners to solution buttons
+document.querySelectorAll('.show-solution-btn').forEach(btn => {
+btn.addEventListener('click', function() {
+const index = this.getAttribute('data-index');
+const solutionDiv = document.getElementById(`solution-${index}`);
+solutionDiv.classList.toggle('show');
+this.textContent = solutionDiv.classList.contains('show') ? 'Hide Solution' : 'Show Solution';
+});
+});
+
+// Track usage
+trackUsage('open-ended', topic);
+}
+
+function saveQuizResults(score, total, timeSpent) {
+// Get existing results from localStorage
+const results = JSON.parse(localStorage.getItem('quizResults') || '[]');
+const topic = document.getElementById('quiz-topic').value;
+
+// Add new result
+results.push({
+date: new Date().toISOString(),
+topic: topic === 'all' ? 'Mixed Topics' : topic,
+score: score,
+total: total,
+percentage: Math.round(score / total * 100),
+timeSpent: timeSpent,
+difficulty: document.getElementById('quiz-difficulty').value
+});
+
+// Save back to localStorage
+localStorage.setItem('quizResults', JSON.stringify(results));
+
+// Update progress display
+updateProgressCharts();
+}
+
+// Progress tracking functionality
+function trackUsage(type, topic, duration = 1) {
+// Get existing usage data from localStorage
+const usage = JSON.parse(localStorage.getItem('usageData') || '{}');
+
+// Get current week number
+const now = new Date();
+const weekStart = new Date(now.setDate(now.getDate() - now.getDay()));
+const weekKey = weekStart.toISOString().split('T')[0];
+
+// Initialize week data if not exists
+if (!usage[weekKey]) {
+usage[weekKey] = {
+practice: {},
+quiz: {},
+openEnded: {},
+totalMinutes: 0
+};
+}
+
+// Update usage data
+if (type === 'practice') {
+usage[weekKey].practice[topic] = (usage[weekKey].practice[topic] || 0) + 1;
+usage[weekKey].totalMinutes += 1; // Estimate 1 minute per practice question
+} else if (type === 'quiz') {
+usage[weekKey].quiz[topic] = (usage[weekKey].quiz[topic] || 0) + 1;
+usage[weekKey].totalMinutes += duration;
+} else if (type === 'open-ended') {
+usage[weekKey].openEnded[topic] = (usage[weekKey].openEnded[topic] || 0) + 1;
+usage[weekKey].totalMinutes += 2; // Estimate 2 minutes per open-ended question
+}
+
+// Save back to localStorage
+localStorage.setItem('usageData', JSON.stringify(usage));
+
+// Update progress display if on that tab
+if (document.querySelector('.tab-content.active').id === 'progress') {
+updateProgressCharts();
+}
+}
+
+function updateProgressCharts() {
+// Update usage stats
+const usage = JSON.parse(localStorage.getItem('usageData') || '{}');
+const now = new Date();
+const weekStart = new Date(now.setDate(now.getDate() - now.getDay()));
+const weekKey = weekStart.toISOString().split('T')[0];
+
+if (usage[weekKey]) {
+document.getElementById('usage-stats').textContent =
+`${usage[weekKey].totalMinutes} minutes this week`;
+} else {
+document.getElementById('usage-stats').textContent = '0 minutes this week';
+}
+
+// Simple usage chart (in a real app, you'd use a charting library)
+const usageChart = document.getElementById('usage-chart');
+usageChart.innerHTML = '<div style="background:#3498db;height:' +
+(usage[weekKey] ? Math.min(usage[weekKey].totalMinutes, 100) : 0) +
+'%;width:100%;"></div>';
+
+// Calculate average score
+const results = JSON.parse(localStorage.getItem('quizResults') || '[]');
+if (results.length > 0) {
+const total = results.reduce((sum, r) => sum + r.percentage, 0);
+const average = Math.round(total / results.length);
+document.getElementById('average-score').textContent = `${average}%`;
+
+// Estimate topics mastered (score > 70%)
+const topics = {};
+results.forEach(r => {
+if (r.percentage > 70) {
+topics[r.topic] = true;
+}
+});
+document.getElementById('topics-mastered').textContent = Object.keys(topics).length;
+} else {
+document.getElementById('average-score').textContent = '0%';
+document.getElementById('topics-mastered').textContent = '0';
+}
+
+// Show quiz history
+const historyDiv = document.getElementById('quiz-history');
+if (results.length > 0) {
+historyDiv.innerHTML = results.slice().reverse().map(r => `
+<div class="history-item">
+<strong>${new Date(r.date).toLocaleDateString()}</strong> -
+${r.topic} (${r.difficulty}): ${r.score}/${r.total} (${r.percentage}%)
+<br><small>Time: ${r.timeSpent} minutes</small>
+</div>
+`).join('');
+} else {
+historyDiv.innerHTML = '<p>No quiz results yet. Complete a quiz to see your progress.</p>';
+}
+}
+
+function exportProgressData() {
+const results = JSON.parse(localStorage.getItem('quizResults') || '[]');
+const usage = JSON.parse(localStorage.getItem('usageData') || '{}');
+
+const data = {
+quizResults: results,
+usageData: usage,
+exportedAt: new Date().toISOString()
+};
+
+const dataStr = JSON.stringify(data, null, 2);
+const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+
+const exportFileDefaultName = `maths-practice-progress-${new Date().toISOString().split('T')[0]}.json`;
+
+const linkElement = document.createElement('a');
+linkElement.setAttribute('href', dataUri);
+linkElement.setAttribute('download', exportFileDefaultName);
+linkElement.click();
+}
+
+// Utility functions
+function shuffleArray(array) {
+const newArray = [...array];
+for (let i = newArray.length - 1; i > 0; i--) {
+const j = Math.floor(Math.random() * (i + 1));
+[newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+}
+return newArray;
+}
+
+// Initialize progress charts if on that tab
+if (document.querySelector('.tab-content.active').id === 'progress') {
+updateProgressCharts();
+}
+
+// Load open-ended questions if on that tab
+if (document.querySelector('.tab-content.active').id === 'open-ended') {
+loadOpenEndedQuestions();
+}
+</script>
+</body>
+</html>
